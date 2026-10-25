@@ -16,7 +16,7 @@
     </header>
     <div id="announcement" class="announcement" role="status"></div>
     <div id="combo" class="combo"></div>
-    <footer class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> Басуу</span><span><kbd>J</kbd> Муштум</span><span><kbd>K</kbd> Тепки</span><span><kbd>Space</kbd> Секирүү</span><span><kbd>E</kbd> Дүкөн</span><button id="fullButton">Толук экран ⛶</button></footer>
+    <footer class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> Басуу</span><span><kbd>J</kbd> Муштум</span><span><kbd>K</kbd> Тепки</span><span><kbd>Space</kbd> Секирүү</span><span><kbd>E</kbd> Дүкөн</span><button id="mainRunButton" type="button" aria-pressed="false">Чуркоо</button><button id="fullButton">Толук экран ⛶</button></footer>
     <div id="overlay" class="overlay">
       <section class="menu" aria-labelledby="menuTitle">
         <p class="chapter" id="menuTag">БИР КӨЧӨ. БИР МАКСАТ.</p>
@@ -37,6 +37,7 @@
     <section class="story-copy"><p class="chapter" id="storyTag"></p><h2 id="storyTitle"></h2><div class="story-dialogue"><b id="storySpeaker"></b><p id="storyLine"></p></div><p id="storyNote"></p><button id="storyNext" class="primary" type="button">УЛАНТУУ →</button><small>Enter же Space — улантуу</small></section>
   </dialog>
   <script src="hero-sprite.js"></script>
+  <script src="run-control.js"></script>
   <script src="game.js"></script>
   <script src="story.js"></script>
 </body>

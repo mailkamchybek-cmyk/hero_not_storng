@@ -1,6 +1,8 @@
 'use strict';
 const heroAtlas = new Image();
 heroAtlas.src = 'hero-sprites.png?v=1';
+const walkAtlas=new Image();walkAtlas.src='walking-demo/walk.png?v=2';
+const runAtlas=new Image();runAtlas.src='walking-demo/run.png?v=2';
 const HERO_ROWS = {
   idleRight: [0,4,6], idleLeft: [1,4,6],
   walkRight: [2,8,10], walkLeft: [3,8,10],
@@ -20,12 +22,19 @@ function heroSpriteFrame(u) {
     const a=HERO_ROWS[u.attack.type+side];
     return {row:a[0],frame:Math.min(a[1]-1,Math.floor(u.attack.age*a[2])),mirror:false};
   }
-  const a=HERO_ROWS[(u.isMoving?'walk':'idle')+side];
+  const a=HERO_ROWS['idle'+side];
   return {row:a[0],frame:Math.floor(u.isMoving?u.walk:time*a[2])%a[1],mirror:false};
 }
 function drawHeroSprite(u) {
   if(!heroAtlas.complete||!heroAtlas.naturalWidth) return false;
   if(u.dead>1.1) return true;
+  const moving=u.isMoving&&u.hp>0&&u.stun<=0&&!u.attack&&u.z===0&&u.vz<=0&&!(u.landing>0);
+  const motionImage=u.isRunning?runAtlas:walkAtlas;
+  if(moving&&motionImage.complete&&motionImage.naturalWidth){
+    const count=u.isRunning?8:5,frame=Math.floor((u.motionPhase||0)*count)%count,scale=84/144;
+    ctx.save();ctx.translate(Math.round(u.x-camera),Math.round(u.y));ctx.scale(u.face,1);ctx.imageSmoothingEnabled=false;
+    ctx.drawImage(motionImage,frame*128,0,128,160,-64*scale,-152*scale,128*scale,160*scale);ctx.restore();return true;
+  }
   const a=heroSpriteFrame(u),x=Math.round(u.x-camera),y=Math.round(u.y-u.z),size=112;
   ctx.save();
   ctx.globalAlpha=u.hp<=0?Math.max(0,1-u.dead):1;
