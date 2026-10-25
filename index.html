@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ky">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11151e"><title>Hero Not Strong — Көчө мектеби</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell" aria-label="Hero Not Strong көчө мушташы">
+    <canvas id="game" width="960" height="540" aria-label="Капталдан көрүнгөн көчө мушташы"></canvas>
+    <header class="hud">
+      <div class="identity"><span class="portrait">H</span><div><span class="eyebrow">HERO NOT STRONG</span><div class="health"><i id="healthFill"></i><b id="healthText">100 / 100</b></div></div></div>
+      <div class="mission"><span class="eyebrow" id="stageLabel">01 / КӨЧӨ МЕКТЕБИ</span><strong id="objective">Көчөнүн аягына жет</strong></div>
+      <div class="wallet"><span>◈</span><b id="money">0</b><small>СОМ</small></div>
+      <button id="pauseButton" class="icon-button" aria-label="Оюнду токтотуу" title="Пауза (Esc)">Ⅱ</button>
+    </header>
+    <div id="announcement" class="announcement" role="status"></div>
+    <div id="combo" class="combo"></div>
+    <footer class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> Басуу</span><span><kbd>J</kbd> Муштум</span><span><kbd>K</kbd> Тепки</span><span><kbd>Space</kbd> Секирүү</span><span><kbd>E</kbd> Дүкөн</span><button id="fullButton">Толук экран ⛶</button></footer>
+    <div id="overlay" class="overlay">
+      <section class="menu" aria-labelledby="menuTitle">
+        <p class="chapter" id="menuTag">БИР КӨЧӨ. БИР МАКСАТ.</p>
+        <h1 id="menuTitle">HERO<br>NOT <em>STRONG.</em></h1>
+        <p id="menuDescription" class="description">Күчтүү болуп төрөлбөйсүң.<br>Көчөдө үйрөнөсүң.</p>
+        <button id="startButton" class="primary">ОЮНДУ БАШТОО <span>→</span></button>
+        <p class="menu-note" id="menuNote">3 квартал · көчө мушташы · акыркы кармаш</p>
+      </section>
+      <div class="side-note">КӨЧӨ МЕКТЕБИ <span>VOL. 01 / БИШКЕК</span></div>
+    </div>
+    <dialog id="shop" aria-labelledby="shopTitle"><form method="dialog"><button class="close" aria-label="Жабуу">×</button></form><span class="eyebrow">ТЫНЫГУУ УЧУРУ</span><h2 id="shopTitle">Көчө дүкөнү</h2><p>Тамак күч берет. Сатып алуу үчүн 20 сом керек.</p><button id="buyFood" class="primary">Самса · +40 HP <span>20 ◈</span></button><p id="shopMessage" role="status"></p><small>Жабуу: Esc же E</small></dialog>
+    <nav class="touch-controls" aria-label="Сенсордук башкаруу"><div class="dpad"><button data-key="ArrowUp" aria-label="Өйдө">↑</button><button data-key="ArrowLeft" aria-label="Солго">←</button><button data-key="ArrowDown" aria-label="Ылдый">↓</button><button data-key="ArrowRight" aria-label="Оңго">→</button></div><div><button data-key="KeyJ">J</button><button data-key="KeyK">K</button><button data-key="Space">↟</button><button data-key="KeyE">E</button></div></nav>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
